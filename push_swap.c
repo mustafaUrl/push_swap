@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: muraler <muraler@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/02 10:48:45 by muraler           #+#    #+#             */
+/*   Updated: 2022/10/02 10:48:49 by muraler          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void ft_array_sort(int *array, int argc)
+void	ft_array_sort(int *array, int argc)
 {
-	int tmp;
-	int i;
-	int j;
+	int	tmp;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -25,11 +37,13 @@ void ft_array_sort(int *array, int argc)
 	}
 }
 
-static void ft_create_stack_and_array(int *array,
-									  t_list **list_a, int argc, char **argv)
+static void	ft_create_stack_and_array(int *array,
+										t_list **list_a,
+										int argc,
+										char **argv)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 1;
 	j = 0;
@@ -42,10 +56,10 @@ static void ft_create_stack_and_array(int *array,
 	}
 }
 
-void ft_getting_index(t_list **list_a, int *array, int argc)
+void	ft_getting_index(t_list **list_a, int *array, int argc)
 {
-	int i;
-	t_list *tmp;
+	int		i;
+	t_list	*tmp;
 
 	i = 0;
 	tmp = *list_a;
@@ -61,36 +75,37 @@ void ft_getting_index(t_list **list_a, int *array, int argc)
 		i = 0;
 	}
 }
-static void ft_one_arg(t_list **list_a, char *argv, int *array)
+
+static void	ft_one_arg(t_list **list_a, char *argv, int *array)
 {
 	ft_one_check(argv);
 	ft_creat_one(list_a, argv);
 	ft_array_add(list_a, array);
 }
-int main(int ac, char **argv)
+
+int	main(int ac, char **argv)
 {
-	t_list *list_a;
-	t_list *list_b;
-	int *array;
-	int	argc;
-	
-	if(ac == 2)
-		argc = 1 + wordcounter(argv[1], ' ');
-	else
-		argc = ac;
-	array = malloc(sizeof(int) * (argc -1));
-	list_a = NULL;
-	list_b = NULL;
+	t_list	*list_a;
+	t_list	*list_b;
+	int		*array;
+	int		argc;
+
 	if (ac < 2)
 		exit(1);
+	if (ac == 2)
+	{
+		if (argv[1][0] == '\0')
+			exit(1);
+		argc = 1 + wordcounter(argv[1], ' ');
+	}
+	else
+		argc = ac;
+	array = malloc(sizeof(int) * (argc - 1));
+	list_a = NULL;
+	list_b = NULL;
 	if (ac > 2)
 		ft_create_stack_and_array(array, &list_a, argc, argv);
 	else
 		ft_one_arg(&list_a, argv[1], array);
-	ft_check_dup(argc, array);
-	ft_check_sort(&list_a, argc);
-	ft_array_sort(array, argc);
-	ft_getting_index(&list_a, array, argc);
-	ft_go_to_sort(&list_a, &list_b, argc);
-	exit (0);
+	ft_function(&list_a, &list_b, argc, array);
 }

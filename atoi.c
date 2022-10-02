@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   atoi.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: muraler <muraler@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/02 10:47:38 by muraler           #+#    #+#             */
+/*   Updated: 2022/10/02 10:47:44 by muraler          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	ft_isdigit(int c)
@@ -51,7 +63,7 @@ long int	ft_atoi(const char *str)
 	skip_space(str, &i, &n);
 	j = i;
 	check_dit(str, &i);
-	while (str[j] >= '0' && str [j] <= '9')
+	while (str[j] >= '0' && str[j] <= '9')
 	{
 		res = res * 10 + str[j] - '0';
 		j++;

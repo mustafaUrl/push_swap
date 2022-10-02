@@ -10,6 +10,7 @@ SRC = atoi.c\
 		sort.c\
 		sort_100_500.c\
 		swap.c\
+		function.c
 
 OBJ = $(SRC:.c=.o)
 

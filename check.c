@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: muraler <muraler@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/02 10:47:55 by muraler           #+#    #+#             */
+/*   Updated: 2022/10/02 10:48:02 by muraler          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void ft_check_sort(t_list **list_a, int argc)
+void	ft_check_sort(t_list **list_a, int argc)
 {
-	t_list *tmp;
-	int i;
+	t_list	*tmp;
+	int		i;
 
 	i = 0;
 	tmp = *list_a;
@@ -12,7 +24,7 @@ void ft_check_sort(t_list **list_a, int argc)
 		if (tmp->data > tmp->next->data)
 		{
 			i = 1;
-			break;
+			break ;
 		}
 		tmp = tmp->next;
 	}
@@ -20,16 +32,16 @@ void ft_check_sort(t_list **list_a, int argc)
 		exit(1);
 }
 
-void ft_check_dup(int argc, int *array)
+void	ft_check_dup(int argc, int *array)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
-	while (i < argc -1)
+	while (i < argc - 1)
 	{
 		j = i + 1;
-		while (j < argc -1)
+		while (j < argc - 1)
 		{
 			if (array[i] == array[j])
 				ft_exit();
@@ -39,10 +51,10 @@ void ft_check_dup(int argc, int *array)
 	}
 }
 
-int wordcounter(const char *p, char c)
+int	wordcounter(const char *p, char c)
 {
-	int i;
-	int trigger;
+	int	i;
+	int	trigger;
 
 	i = 0;
 	trigger = 0;
@@ -60,17 +72,16 @@ int wordcounter(const char *p, char c)
 	return (i);
 }
 
-
-
-void ft_one_check(char *argv)
+void	ft_one_check(char *argv)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (argv[i] != '\0')
 	{
-		if (!ft_isdigit(argv[i]) && argv[i] != ' ' && argv[i] != '-' && argv[i] != '+' && argv[i] != '\t' && argv[i] != '\n'
-		&& argv[i] != '\r' && argv[i] != '\v' && argv[i] != '\f')
+		if (!ft_isdigit(argv[i]) && argv[i] != ' ' && argv[i] != '-'
+			&& argv[i] != '+' && argv[i] != '\t' && argv[i] != '\n'
+			&& argv[i] != '\r' && argv[i] != '\v' && argv[i] != '\f')
 			ft_exit();
 		i++;
 	}
